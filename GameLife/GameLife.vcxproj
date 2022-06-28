@@ -86,6 +86,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GameField.cpp" />
+    <ClCompile Include="GameOfLifeSim.cpp" />
     <ClCompile Include="main.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
@@ -95,17 +97,17 @@
     <ClCompile Include="MyWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="MyWidget.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="MyWidget.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\.gitignore" />
     <None Include="GameLife.pro" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MyWindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="GameField.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameOfLifeSim.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

@@ -1,5 +1,5 @@
 #include "MyWindow.h"
-#include "MyWidget.h"
+#include "GameField.h"
 
 MyWindow::MyWindow(const QApplication& app)
 {
@@ -9,7 +9,7 @@ MyWindow::MyWindow(const QApplication& app)
 	this->setWindowTitle("GameOfLife");
 
 	//Create game field widget
-	MyWidget* TestRect = new MyWidget;
+	GameField* FieldOfGame = new GameField;
 
 	//Create user interface buttons and fix his sizes
 	QPushButton* StartButton = new QPushButton(QString(QString::fromWCharArray(L"Старт")));
@@ -44,7 +44,7 @@ MyWindow::MyWindow(const QApplication& app)
 	vlayout->setSpacing(15);
 
 	//Add game field widget to horizontal layout
-	hlayout->addWidget(TestRect, 1);	//stretch = 1 to right align of buttons and labels
+	hlayout->addWidget(FieldOfGame, 1);	//stretch = 1 to right align of buttons and labels
 
 	//Add text labels and buttons 
 	vlayout->addWidget(TextGenLabel, 0, Qt::AlignCenter);
