@@ -6,10 +6,11 @@ class MyWidget :
 {
 Q_OBJECT
 public:
-
+    
 private:
     int num;
     void paintEvent(QPaintEvent* event);
+    
 signals:
     void MySignal();
 };
