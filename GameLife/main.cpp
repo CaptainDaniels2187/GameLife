@@ -14,11 +14,17 @@ int main(int args, char** argv)
 	MyWidget* TestRect = new MyWidget;
 
 	QPushButton* pb1 = new QPushButton("1");
+	pb1->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
 	QPushButton* pb2 = new QPushButton("2");
+	pb2->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
 	QPushButton* pb3 = new QPushButton("3");
+	pb3->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
 	QPushButton* pb4 = new QPushButton("4");
+	pb4->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
 	QPushButton* pb5 = new QPushButton("5");
+	pb5->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
 	QPushButton* pb6 = new QPushButton("6");
+	pb6->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
 
 	QHBoxLayout* hlayout = new QHBoxLayout;
 	QVBoxLayout* vlayout = new QVBoxLayout;
