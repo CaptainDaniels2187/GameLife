@@ -21,3 +21,6 @@
 
 # ... and not QMake .pro files
 !*.pro
+
+# ... and not Sourse files path
+!/GameLife

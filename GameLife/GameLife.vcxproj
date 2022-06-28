@@ -92,6 +92,7 @@
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
     </ClCompile>
+    <ClCompile Include="MyWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MyWidget.h" />
@@ -102,6 +103,9 @@
   <ItemGroup>
     <None Include="..\.gitignore" />
     <None Include="GameLife.pro" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="MyWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

@@ -1,5 +1,5 @@
 #pragma once
-#include<QtWidgets>
+#include <QtWidgets>
 
 class MyWidget :
     public QWidget

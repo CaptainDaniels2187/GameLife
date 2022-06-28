@@ -11,9 +11,11 @@ CONFIG += c++14
 SOURCES += \
     main.cpp \
     MyWidget.cpp
+    MyWindow.cpp
 
 HEADERS += \
     MyWidget.h
+    MyWindow.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
