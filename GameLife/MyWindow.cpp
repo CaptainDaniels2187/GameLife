@@ -4,9 +4,9 @@
 MyWindow::MyWindow(const QApplication& app)
 {
 	//Set Window settings
-	this->setGeometry(0, 0, 1280, 720);
-	this->setMinimumSize(530, 350);
-	this->setWindowTitle("GameOfLife");
+	this->setGeometry(DEFAULT_WINDOW_POS_X, DEFAULT_WINDOW_POS_Y, DEFAULT_WINDOW_SIZE_X, DEFAULT_WINDOW_SIZE_Y);
+	this->setMinimumSize(DEFAULT_MIN_WINDOW_SIZE_X, DEFAULT_MIN_WINDOW_SIZE_Y);
+	this->setWindowTitle(DEFAULT_GAME_TITLE);
 
 	//Create game field widget
 	GameField* FieldOfGame = new GameField;
@@ -30,6 +30,21 @@ MyWindow::MyWindow(const QApplication& app)
 	QPushButton* ExitButton = new QPushButton(QString(QString::fromWCharArray(L"Выход")));
 	ExitButton->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
 
+	//Coonect clicked start button signal to start timer of game
+	QObject::connect(StartButton, SIGNAL(clicked()), FieldOfGame, SLOT(StartTimer()));
+
+	//Connect clicked resume button signal to resume timer of game
+	QObject::connect(ResumeButton, SIGNAL(clicked()), FieldOfGame, SLOT(StartTimer()));
+
+	//Connect clicked pause button signal to stop timer of game
+	QObject::connect(PauseButton, SIGNAL(clicked()), FieldOfGame, SLOT(StopTimer()));
+
+	//Connect clicked reset button signal to reset the game
+	QObject::connect(ResetButton, SIGNAL(clicked()), FieldOfGame, SLOT(ResetGame()));
+
+	//Connect clicked random button signal to set random live cells
+	QObject::connect(RandomSetButton, SIGNAL(clicked()), FieldOfGame, SLOT(RandomGameSet));
+
 	//Connect clicked exit button signal to exit app
 	QObject::connect(ExitButton, SIGNAL(clicked()), &app, SLOT(quit()));
 
@@ -40,8 +55,8 @@ MyWindow::MyWindow(const QApplication& app)
 	//Create layouts for widgets and set his settings
 	QHBoxLayout* hlayout = new QHBoxLayout;
 	QVBoxLayout* vlayout = new QVBoxLayout;
-	vlayout->setContentsMargins(0, 15, 30, 15);
-	vlayout->setSpacing(15);
+	vlayout->setContentsMargins(V_DEFAULT_LEFT_MARGIN, V_DEFAULT_TOP_MARGIN, V_DEFAULT_RIGHT_MARGIN, V_DEFAULT_BOTTOM_MARGIN);
+	vlayout->setSpacing(V_DEFAULT_SPACING);
 
 	//Add game field widget to horizontal layout
 	hlayout->addWidget(FieldOfGame, 1);	//stretch = 1 to right align of buttons and labels
