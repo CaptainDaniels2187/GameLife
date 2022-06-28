@@ -39,5 +39,8 @@
     <None Include="GameLife.pro">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="..\.gitignore">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
