@@ -11,6 +11,7 @@ int main(int args, char** argv)
 	
 	QWidget MainWindow;
 	MainWindow.setGeometry(0, 0, 1280, 720);
+	MainWindow.setMinimumSize(530, 350);
 	MainWindow.setWindowTitle("GameOfLife");
 
 	MyWidget* TestRect = new MyWidget;
@@ -29,12 +30,17 @@ int main(int args, char** argv)
 	QObject::connect(ExitButton, SIGNAL(clicked()), &GameOfLife, SLOT(quit()));
 	ExitButton->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
 
+	QLabel* TextGenLabel = new QLabel(QString(QString::fromWCharArray(L"Текущее поколение:")));
+	QLabel* VolatileNumGenLabel = new QLabel("0");
+
 	QHBoxLayout* hlayout = new QHBoxLayout;
 	QVBoxLayout* vlayout = new QVBoxLayout;
 	vlayout->setContentsMargins(0, 15, 30, 15);
 	vlayout->setSpacing(15);
 
 	hlayout->addWidget(TestRect,1);
+	vlayout->addWidget(TextGenLabel, 0, Qt::AlignCenter);
+	vlayout->addWidget(VolatileNumGenLabel, 0, Qt::AlignCenter);
 	vlayout->addWidget(StartButton, 0, Qt::AlignCenter);
 	vlayout->addWidget(ResumeButton, 0, Qt::AlignCenter);
 	vlayout->addWidget(PauseButton, 0, Qt::AlignCenter);
