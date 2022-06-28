@@ -35,4 +35,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="GameLife.pro">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>
