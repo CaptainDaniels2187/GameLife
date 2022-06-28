@@ -18,3 +18,6 @@
 !*.vcxproj
 !*.vcxproj.filters
 !cpp.hint
+
+# ... and not QMake .pro files
+!*.pro
