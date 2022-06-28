@@ -10,12 +10,14 @@ CONFIG += c++14
 
 SOURCES += \
     main.cpp \
-    MyWidget.cpp
     MyWindow.cpp
+    GameField.cpp
+    GameOFLifeSim.cpp
 
 HEADERS += \
-    MyWidget.h
     MyWindow.h
+    GameField.h
+    GameOFLifeSim.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
