@@ -69,8 +69,7 @@ MyWindow::MyWindow(const QApplication& app)
 	vlayout->addWidget(PauseButton, 0, Qt::AlignCenter);
 	vlayout->addWidget(ResetButton, 0, Qt::AlignCenter);
 	vlayout->addWidget(RandomSetButton, 0, Qt::AlignCenter);
-	//Add Stretch space between random and exit button
-	vlayout->addStretch();
+	vlayout->addStretch();	//Add stretch space between random and exit button
 	vlayout->addWidget(ExitButton, 0, Qt::AlignCenter);
 
 	//Add vertical layout with labels and buttons to horizontal(main) layout
