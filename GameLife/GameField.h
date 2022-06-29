@@ -1,6 +1,13 @@
 #pragma once
 
 //////////////// CONFIGS /////////////////////
+//////////////GAME SETTINGS///////////////////
+#ifndef GAME_CONFIGS
+#define GAME_CONFIGS
+
+#define WIN_GENERATION 1000
+
+#endif // !GAME_CONFIGS
 //////////////////////////////////////////////
 ////////////GAME FIELD SETTINGS///////////////
 #ifndef FIELD_CONFIGS
@@ -29,9 +36,16 @@ private:
 //Slots to operate the game
 public slots:
 
+    //Start game timer to 30 frames per second
     void StartTimer();
+
+    //Stop game timer
     void StopTimer();
+
+    //Reset all states of the cells to dead and restart the game
     void ResetGame();
+
+    //Set random value of cells
     void RandomGameSet();
 
 private:
@@ -44,5 +58,10 @@ private:
 
     //Set start game field configuration by user click mouse
     void mousePressEvent(QMouseEvent* event);
+
+public:
+
+    //Init the game field
+    GameField();
 };
 #endif // !_BACK
