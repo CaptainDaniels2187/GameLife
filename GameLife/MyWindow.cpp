@@ -8,6 +8,17 @@ MyWindow::MyWindow(const QApplication& app)
 	this->setMinimumSize(DEFAULT_MIN_WINDOW_SIZE_X, DEFAULT_MIN_WINDOW_SIZE_Y);
 	this->setWindowTitle(DEFAULT_GAME_TITLE);
 
+	//Calculating center of display
+	QRect rect = QApplication::desktop()->availableGeometry();
+	QPoint center = rect.center();
+	int x = center.x() - (width() / 2);
+	int y = center.y() - (height() / 2);
+	center.setX(x);
+	center.setY(y);
+
+	//Move widget to the center
+	this->move(center);
+
 	//Create game field widget
 	GameField* FieldOfGame = new GameField;
 
