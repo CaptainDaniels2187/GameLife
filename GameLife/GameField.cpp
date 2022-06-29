@@ -1,4 +1,5 @@
 #include "GameField.h"
+#include <QDebug>
 
 //Init game field for waiting user input
 GameField::GameField(QWidget* parent) : QWidget(parent)
@@ -40,6 +41,7 @@ void GameField::ResetGame()
 	if (isWorking)
 	{
 		StopTimer();
+		GameTimer = 0;
 	}
 
 	//Reset all data in Simulation
@@ -103,6 +105,7 @@ void GameField::timerEvent(QTimerEvent* event)
 		{
 		case GameOfLifeSim::ALL_IS_DEAD:
 			StopTimer();
+			isStarted = false;
 			//Show the dialog window with defeat message
 			//...
 			break;
@@ -110,6 +113,7 @@ void GameField::timerEvent(QTimerEvent* event)
 			break;
 		case GameOfLifeSim::WIN:
 			StopTimer();
+			isStarted = false;
 			//Show the dialog window with win message
 			//...
 			break;
@@ -123,5 +127,32 @@ void GameField::timerEvent(QTimerEvent* event)
 //Draw the game field...
 void GameField::paintEvent(QPaintEvent* event)
 {
-	qDebug() << "Doing nothing)))";
+	QPainter painter(this);
+	painter.setPen(QPen(Qt::gray, 2));
+	int x_cell = (this->width() - FIELD_RIGHT_MARGIN) / NUM_OF_CELLS_X;
+	int y_cell = (this->height() - FIELD_BOTTOM_MARGIN) / NUM_OF_CELLS_Y;
+	int x = 0, y = 0;
+	for (int i = 1; i <= NUM_OF_CELLS_Y; ++i)
+	{
+		for (int j = 1; j <= NUM_OF_CELLS_X; ++j)
+		{
+			switch (Simulation->getStateOfCell(j, i))
+			{
+			case GameOfLifeSim::ALIVE:
+				painter.setBrush(QBrush(Qt::black, Qt::SolidPattern));
+				break;
+			case GameOfLifeSim::DEAD:
+				painter.setBrush(QBrush(Qt::white, Qt::SolidPattern));
+				break;
+			default:
+				qDebug() << "Wrong cell state or coordinates! " << "x: " << j << " " << "y: " << i;
+				break;
+			}
+			painter.drawRect(QRect(x, y, x_cell, y_cell));
+			x += x_cell;
+		}
+		x = 0;
+		y += y_cell;
+	}
+	//painter.drawRect(QRect(this->pos(), this->pos() + QPoint(this->width() - FIELD_RIGHT_MARGIN, this->height() - FIELD_BOTTOM_MARGIN)));
 }

@@ -15,9 +15,6 @@ MyWindow::MyWindow(const QApplication& app)
 	QPushButton* StartButton = new QPushButton(QString(QString::fromWCharArray(L"Старт")));
 	StartButton->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
 
-	QPushButton* ResumeButton = new QPushButton(QString(QString::fromWCharArray(L"Продолжить")));
-	ResumeButton->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
-
 	QPushButton* PauseButton = new QPushButton(QString(QString::fromWCharArray(L"Пауза")));
 	PauseButton->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
 
@@ -32,9 +29,6 @@ MyWindow::MyWindow(const QApplication& app)
 
 	//Coonect clicked start button signal to start timer of game
 	QObject::connect(StartButton, SIGNAL(clicked()), FieldOfGame, SLOT(StartTimer()));
-
-	//Connect clicked resume button signal to resume timer of game
-	QObject::connect(ResumeButton, SIGNAL(clicked()), FieldOfGame, SLOT(StartTimer()));
 
 	//Connect clicked pause button signal to stop timer of game
 	QObject::connect(PauseButton, SIGNAL(clicked()), FieldOfGame, SLOT(StopTimer()));
@@ -65,7 +59,6 @@ MyWindow::MyWindow(const QApplication& app)
 	vlayout->addWidget(TextGenLabel, 0, Qt::AlignCenter);
 	vlayout->addWidget(VolatileNumGenLabel, 0, Qt::AlignCenter);
 	vlayout->addWidget(StartButton, 0, Qt::AlignCenter);
-	vlayout->addWidget(ResumeButton, 0, Qt::AlignCenter);
 	vlayout->addWidget(PauseButton, 0, Qt::AlignCenter);
 	vlayout->addWidget(ResetButton, 0, Qt::AlignCenter);
 	vlayout->addWidget(RandomSetButton, 0, Qt::AlignCenter);

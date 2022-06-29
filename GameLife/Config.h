@@ -28,9 +28,13 @@
 #define WIN_GENERATION 1000
 
 #define TIMER_STEP_MS 33
+
 //////////////////////////////////////////////
 ////////////GAME FIELD SETTINGS///////////////
 #define NUM_OF_CELLS_X 45
 #define NUM_OF_CELLS_Y 25
+
+#define FIELD_RIGHT_MARGIN 50
+#define FIELD_BOTTOM_MARGIN 20
 
 //////////////////////////////////////////////

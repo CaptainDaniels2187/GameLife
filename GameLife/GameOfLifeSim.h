@@ -24,15 +24,6 @@ private:
 	//x : 1 .. NUM_OF_CELLS_X
 	//y : 1 .. NUM_OF_CELLS_Y
 
-	//Set cells state before start the game
-	//Return codes:
-	//0 - set is correct
-	//1 - set is incorrect
-	int setStateOfCell(int x, int y, StateOfCells state);
-
-	//Get cells state
-	StateOfCells getStateOfCell(int x, int y) const;
-
 public:
 
 	//Init all class fields
@@ -50,6 +41,15 @@ public:
 	//1 - at least one is alive
 	//1000 - win code
 	StateOfGame NextStep();	//perfomance is important
+
+	//Set cells state before start the game
+	//Return codes:
+	//0 - set is correct
+	//1 - set is incorrect
+	int setStateOfCell(int x, int y, StateOfCells state);
+
+	//Get cells state
+	StateOfCells getStateOfCell(int x, int y) const;
 
 	//Get num of current generation
 	int getNumOfCurrentGeneration() const;

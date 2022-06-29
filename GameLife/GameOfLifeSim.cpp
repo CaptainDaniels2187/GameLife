@@ -52,13 +52,13 @@ void GameOfLifeSim::setRandomCells()
 	std::srand(std::time(0));
 
 	//Set random value of cells
-	for (int i = 0; i < NUM_OF_CELLS_Y; ++i)
+	for (int i = 1; i <= NUM_OF_CELLS_Y; ++i)
 	{
-		for (int j = 0; j < NUM_OF_CELLS_X; ++j)
+		for (int j = 1; j <= NUM_OF_CELLS_X; ++j)
 		{
 			if (setStateOfCell(j, i, static_cast<GameOfLifeSim::StateOfCells>(std::rand() % 2)))
 			{
-				qDebug() << "Wrong game field coordinate! " << "x: " << j << "y: " << i;
+				qDebug() << "Wrong game field coordinate! " << "x: " << j << " " << "y: " << i;
 			}
 		}
 	}
@@ -67,26 +67,26 @@ void GameOfLifeSim::setRandomCells()
 //Set state of cell from mouse coordinates
 void GameOfLifeSim::setStateOfCellFromCoord(int x, int y, int widget_width, int widget_height)
 {
-	int x_cell = widget_width / NUM_OF_CELLS_X;
-	int y_cell = widget_height / NUM_OF_CELLS_Y;
+	int x_cell = (widget_width - FIELD_RIGHT_MARGIN) / NUM_OF_CELLS_X;
+	int y_cell = (widget_height - FIELD_BOTTOM_MARGIN) / NUM_OF_CELLS_Y;
 	int row = y / y_cell;
 	int column = x / x_cell;
 	int return_code = 0;
-	switch (getStateOfCell(column, row))
+	switch (getStateOfCell(column + 1, row + 1))
 	{
 	case DEAD:
-		return_code = setStateOfCell(column, row, ALIVE);
+		return_code = setStateOfCell(column + 1, row + 1, ALIVE);
 		break;
 	case ALIVE:
-		return_code = setStateOfCell(column, row, DEAD);
+		return_code = setStateOfCell(column + 1, row + 1, DEAD);
 		break;
 	default:
-		return_code = setStateOfCell(column, row, ERR);
+		return_code = setStateOfCell(column + 1, row + 1, ERR);
 		break;
 	}
 	if (return_code)
 	{
-		qDebug() << "Wrong game field coordinate! " << "x: " << column << "y: " << row;
+		qDebug() << "Wrong game field coordinate! " << "x: " << column + 1 << "y: " << row + 1;
 	}
 }
 
