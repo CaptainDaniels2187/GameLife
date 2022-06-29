@@ -1,7 +1,8 @@
 #pragma once
 
 #define _BACK
-#include "GameField.h"
+
+#include "Config.h"
 
 class GameOfLifeSim
 {
@@ -19,18 +20,6 @@ private:
 	//Set fictional rows and colums during the game
 	void setFictionalState();
 
-public:
-
-	//Init all class fields
-	GameOfLifeSim();
-
-	//Simlation of Game Of Life
-	//Return codes:
-	//0 - all is dead
-	//1 - at least one is alive
-	//1000 - win code
-	StateOfGame NextStep();	//perfomance is important
-
 	//Cells ccordinates:
 	//x : 1 .. NUM_OF_CELLS_X
 	//y : 1 .. NUM_OF_CELLS_Y
@@ -43,6 +32,24 @@ public:
 
 	//Get cells state
 	StateOfCells getStateOfCell(int x, int y) const;
+
+public:
+
+	//Init all class fields
+	GameOfLifeSim();
+
+	//Set state of cell in the recived coordinates
+	void setStateOfCellFromCoord(int x, int y, int widget_width, int widget_height);
+
+	//Set random value of cells
+	void setRandomCells();
+
+	//Simlation of Game Of Life
+	//Return codes:
+	//0 - all is dead
+	//1 - at least one is alive
+	//1000 - win code
+	StateOfGame NextStep();	//perfomance is important
 
 	//Get num of current generation
 	int getNumOfCurrentGeneration() const;

@@ -1,3 +1,6 @@
+#include <cstdlib>
+#include <ctime>
+#include <QDebug>
 #include "GameOfLifeSim.h"
 
 //Init all class fields on his default values
@@ -18,7 +21,7 @@ GameOfLifeSim::GameOfLifeSim()
 //Set cell state durind user click the field
 int GameOfLifeSim::setStateOfCell(int x, int y, StateOfCells state)
 {
-	if (x >= 1 && x <= NUM_OF_CELLS_X && y >= 1 && y <= NUM_OF_CELLS_Y)
+	if (x >= 1 && x <= NUM_OF_CELLS_X && y >= 1 && y <= NUM_OF_CELLS_Y && state != ERR)
 	{
 		CurrentGeneration[y][x] = state;
 		return 0;
@@ -39,6 +42,51 @@ GameOfLifeSim::StateOfCells GameOfLifeSim::getStateOfCell(int x, int y) const
 	else
 	{
 		return ERR;
+	}
+}
+
+//Set random value of cells
+void GameOfLifeSim::setRandomCells()
+{
+	//Set random seed to local time
+	std::srand(std::time(0));
+
+	//Set random value of cells
+	for (int i = 0; i < NUM_OF_CELLS_Y; ++i)
+	{
+		for (int j = 0; j < NUM_OF_CELLS_X; ++j)
+		{
+			if (setStateOfCell(j, i, static_cast<GameOfLifeSim::StateOfCells>(std::rand() % 2)))
+			{
+				qDebug() << "Wrong game field coordinate! " << "x: " << j << "y: " << i;
+			}
+		}
+	}
+}
+
+//Set state of cell from mouse coordinates
+void GameOfLifeSim::setStateOfCellFromCoord(int x, int y, int widget_width, int widget_height)
+{
+	int x_cell = widget_width / NUM_OF_CELLS_X;
+	int y_cell = widget_height / NUM_OF_CELLS_Y;
+	int row = y / y_cell;
+	int column = x / x_cell;
+	int return_code = 0;
+	switch (getStateOfCell(column, row))
+	{
+	case DEAD:
+		return_code = setStateOfCell(column, row, ALIVE);
+		break;
+	case ALIVE:
+		return_code = setStateOfCell(column, row, DEAD);
+		break;
+	default:
+		return_code = setStateOfCell(column, row, ERR);
+		break;
+	}
+	if (return_code)
+	{
+		qDebug() << "Wrong game field coordinate! " << "x: " << column << "y: " << row;
 	}
 }
 
@@ -101,7 +149,7 @@ GameOfLifeSim::StateOfGame GameOfLifeSim::NextStep()
 			}
 		}
 
-		//Check for one or nore alive
+		//Flag for check one or nore alive
 		bool atLeastOneAlive = false;
 
 		//According to the rules of the game
@@ -127,6 +175,7 @@ GameOfLifeSim::StateOfGame GameOfLifeSim::NextStep()
 			}
 		}
 
+		//Check one or more alive
 		if (atLeastOneAlive)
 		{
 			numOfCurrentGeneration++;

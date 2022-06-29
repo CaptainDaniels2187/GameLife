@@ -18,6 +18,7 @@ HEADERS += \
     MyWindow.h
     GameField.h
     GameOFLifeSim.h
+    Config.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

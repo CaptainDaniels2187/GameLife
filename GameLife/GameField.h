@@ -1,28 +1,5 @@
 #pragma once
 
-//////////////// CONFIGS /////////////////////
-//////////////////////////////////////////////
-//////////////GAME SETTINGS///////////////////
-#ifndef GAME_CONFIGS
-#define GAME_CONFIGS
-
-#define WIN_GENERATION 1000
-
-#define TIMER_STEP_MS 33
-
-#endif // !GAME_CONFIGS
-//////////////////////////////////////////////
-////////////GAME FIELD SETTINGS///////////////
-#ifndef FIELD_CONFIGS
-#define FIELD_CONFIGS
-
-#define NUM_OF_CELLS_X 45
-#define NUM_OF_CELLS_Y 25
-
-#endif // !FIELD_CONFIGS
-//////////////////////////////////////////////
-
-#ifndef _BACK
 #include <QtWidgets>
 #include "GameOfLifeSim.h"
 
@@ -55,11 +32,13 @@ public slots:
 
 private:
 
-    //Change game generation by Timer
-    void timerEvent(QTimerEvent* event);
+
 
     //Set start game field configuration by user click mouse
     void mousePressEvent(QMouseEvent* event);
+
+    //Change game generation by Timer
+    void timerEvent(QTimerEvent* event);
 
     //Draw the game field
     void paintEvent(QPaintEvent* event);
@@ -72,4 +51,3 @@ public:
     //Correct destroy all class fields 
     ~GameField();
 };
-#endif // !_BACK
