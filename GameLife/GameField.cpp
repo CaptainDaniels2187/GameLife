@@ -110,7 +110,7 @@ void GameField::showDialog(GameOfLifeSim::StateOfGame state)
 			QString::fromWCharArray(L" поколений. Вы проиграли."));
 		break;
 	case GameOfLifeSim::WIN:
-		TextMessage->setText(QString::fromWCharArray(L"Вы продержались 1000 поколений. Мои поздравления"));
+		TextMessage->setText(QString::fromWCharArray(L"Вы продержались 1000 поколений. Мои поздравления."));
 		break;
 	default:
 		TextMessage->setText("Error");
