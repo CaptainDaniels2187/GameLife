@@ -12,19 +12,19 @@ MyWindow::MyWindow(const QApplication& app)
 	GameField* FieldOfGame = new GameField;
 
 	//Create user interface buttons and fix his sizes
-	QPushButton* StartButton = new QPushButton(QString(QString::fromWCharArray(L"Старт")));
+	QPushButton* StartButton = new QPushButton(QString::fromWCharArray(L"Старт"));
 	StartButton->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
 
-	QPushButton* PauseButton = new QPushButton(QString(QString::fromWCharArray(L"Пауза")));
+	QPushButton* PauseButton = new QPushButton(QString::fromWCharArray(L"Пауза"));
 	PauseButton->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
 
-	QPushButton* ResetButton = new QPushButton(QString(QString::fromWCharArray(L"Сброс")));
+	QPushButton* ResetButton = new QPushButton(QString::fromWCharArray(L"Сброс"));
 	ResetButton->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
 
-	QPushButton* RandomSetButton = new QPushButton(QString(QString::fromWCharArray(L"Случайная расстановка")));
+	QPushButton* RandomSetButton = new QPushButton(QString::fromWCharArray(L"Случайная расстановка"));
 	RandomSetButton->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
 
-	QPushButton* ExitButton = new QPushButton(QString(QString::fromWCharArray(L"Выход")));
+	QPushButton* ExitButton = new QPushButton(QString::fromWCharArray(L"Выход"));
 	ExitButton->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
 
 	//Coonect clicked start button signal to start timer of game
@@ -37,7 +37,7 @@ MyWindow::MyWindow(const QApplication& app)
 	QObject::connect(ResetButton, SIGNAL(clicked()), FieldOfGame, SLOT(ResetGame()));
 
 	//Connect clicked random button signal to set random live cells
-	QObject::connect(RandomSetButton, SIGNAL(clicked()), FieldOfGame, SLOT(RandomGameSet));
+	QObject::connect(RandomSetButton, SIGNAL(clicked()), FieldOfGame, SLOT(RandomGameSet()));
 
 	//Connect clicked exit button signal to exit app
 	QObject::connect(ExitButton, SIGNAL(clicked()), &app, SLOT(quit()));
@@ -45,6 +45,9 @@ MyWindow::MyWindow(const QApplication& app)
 	//Create text labels for display current game generation 
 	QLabel* TextGenLabel = new QLabel(QString(QString::fromWCharArray(L"Текущее поколение:")));
 	QLabel* VolatileNumGenLabel = new QLabel("0");
+
+	//Connect volatile num of the game generation to text label
+	QObject::connect(FieldOfGame, SIGNAL(GenChanged(int)), VolatileNumGenLabel, SLOT(setNum(int)));
 
 	//Create layouts for widgets and set his settings
 	QHBoxLayout* hlayout = new QHBoxLayout;

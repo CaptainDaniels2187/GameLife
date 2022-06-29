@@ -15,6 +15,10 @@ private:
     bool isStarted;
     bool isWorking;
 
+//Signals send to others
+signals:
+    void GenChanged(int);
+
 //Slots to operate the game
 public slots:
 
@@ -32,8 +36,6 @@ public slots:
 
 private:
 
-
-
     //Set start game field configuration by user click mouse
     void mousePressEvent(QMouseEvent* event);
 
@@ -42,6 +44,9 @@ private:
 
     //Draw the game field
     void paintEvent(QPaintEvent* event);
+
+    //Show the dialog win\lost window
+    void showDialog(GameOfLifeSim::StateOfGame state);
 
 public:
 
