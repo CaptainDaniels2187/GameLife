@@ -7,7 +7,7 @@ class GameOfLifeSim
 {
 public:
 
-	enum StateOfGame { ALL_IS_DEAD, ONE_OR_MORE_ALIVE, WIN = 1000 };
+	enum StateOfGame { ALL_IS_DEAD, ONE_OR_MORE_ALIVE, WIN = WIN_GENERATION };
 	enum StateOfCells { DEAD, ALIVE, ERR };
 
 private:

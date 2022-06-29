@@ -19,7 +19,6 @@
 #define DEFAULT_GAME_TITLE "GameOfLife"
 
 #endif // !WINDOW_CONFIGS
-
 //////////////////////////////////////////////
 //////////VERTICAL LAYOUT SETTINGS////////////
 #ifndef V_LAYOUT_CONGIGS

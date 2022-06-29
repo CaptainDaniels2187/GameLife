@@ -1,6 +1,6 @@
 #include "GameOfLifeSim.h"
 
-//Init all class fields od his default values
+//Init all class fields on his default values
 GameOfLifeSim::GameOfLifeSim()
 {
 	numOfCurrentGeneration = 0;
@@ -79,6 +79,7 @@ void GameOfLifeSim::setFictionalState()
 //according to the rules of the game, and new values are already set.
 GameOfLifeSim::StateOfGame GameOfLifeSim::NextStep()
 {
+	//Check for win condition
 	if (numOfCurrentGeneration < WIN_GENERATION)
 	{
 		setFictionalState();

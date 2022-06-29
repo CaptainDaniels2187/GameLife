@@ -1,11 +1,14 @@
 #pragma once
 
 //////////////// CONFIGS /////////////////////
+//////////////////////////////////////////////
 //////////////GAME SETTINGS///////////////////
 #ifndef GAME_CONFIGS
 #define GAME_CONFIGS
 
 #define WIN_GENERATION 1000
+
+#define TIMER_STEP_MS 33
 
 #endif // !GAME_CONFIGS
 //////////////////////////////////////////////
@@ -30,8 +33,10 @@ Q_OBJECT
 
 private:
 
-    GameOfLifeSim Simulation;
+    int GameTimer;
+    GameOfLifeSim* Simulation;
     bool isStarted;
+    bool isWorking;
 
 //Slots to operate the game
 public slots:
@@ -50,18 +55,21 @@ public slots:
 
 private:
 
-    //Draw the game field
-    void paintEvent(QPaintEvent* event);
-
     //Change game generation by Timer
     void timerEvent(QTimerEvent* event);
 
     //Set start game field configuration by user click mouse
     void mousePressEvent(QMouseEvent* event);
 
+    //Draw the game field
+    void paintEvent(QPaintEvent* event);
+
 public:
 
     //Init the game field
-    GameField();
+    GameField(QWidget* parent = nullptr);
+
+    //Correct destroy all class fields 
+    ~GameField();
 };
 #endif // !_BACK
