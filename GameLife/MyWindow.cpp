@@ -11,10 +11,10 @@ MyWindow::MyWindow(const QApplication& app)
 	//Calculating center of display
 	QRect rect = QApplication::desktop()->availableGeometry();
 	QPoint center = rect.center();
-	int x = center.x() - (width() / 2);
-	int y = center.y() - (height() / 2);
-	center.setX(x);
-	center.setY(y);
+	int dx = center.x() - (this->width() / 2);
+	int dy = center.y() - (this->height() / 2);
+	center.setX(dx);
+	center.setY(dy);
 
 	//Move widget to the center
 	this->move(center);
