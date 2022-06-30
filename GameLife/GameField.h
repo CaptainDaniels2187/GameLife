@@ -36,6 +36,9 @@ public slots:
 
 private:
 
+    //Set state of cell in the recived coordinates
+    void setStateOfCellFromCoord(int x, int y);
+
     //Set start game field configuration by user click mouse
     void mousePressEvent(QMouseEvent* event);
 

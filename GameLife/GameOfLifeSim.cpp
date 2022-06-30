@@ -64,37 +64,6 @@ void GameOfLifeSim::setRandomCells()
 	}
 }
 
-//Set state of cell from mouse coordinates
-void GameOfLifeSim::setStateOfCellFromCoord(int x, int y, int widget_width, int widget_height)
-{
-	//Calculating row and column of cell in matrix
-	int x_cell = (widget_width - FIELD_RIGHT_MARGIN) / NUM_OF_CELLS_X;
-	int y_cell = (widget_height - FIELD_BOTTOM_MARGIN) / NUM_OF_CELLS_Y;
-	int row = y / y_cell;
-	int column = x / x_cell;
-	int return_code = 0;
-
-	//Switch his state
-	switch (getStateOfCell(column + 1, row + 1))
-	{
-	case DEAD:
-		return_code = setStateOfCell(column + 1, row + 1, ALIVE);
-		break;
-	case ALIVE:
-		return_code = setStateOfCell(column + 1, row + 1, DEAD);
-		break;
-	default:
-		return_code = setStateOfCell(column + 1, row + 1, ERR);
-		break;
-	}
-
-	//Check return code for coorect set state
-	if (return_code)
-	{
-		qDebug() << "Wrong game field coordinate! " << "x: " << column + 1 << "y: " << row + 1;
-	}
-}
-
 //Get num of current generation
 int GameOfLifeSim::getNumOfCurrentGeneration() const
 {

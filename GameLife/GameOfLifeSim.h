@@ -29,9 +29,6 @@ public:
 	//Init all class fields
 	GameOfLifeSim();
 
-	//Set state of cell in the recived coordinates
-	void setStateOfCellFromCoord(int x, int y, int widget_width, int widget_height);
-
 	//Set random value of cells
 	void setRandomCells();
 

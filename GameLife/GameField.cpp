@@ -70,6 +70,37 @@ void GameField::RandomGameSet()
 	}
 }
 
+//Set state of cell from mouse coordinates
+void GameField::setStateOfCellFromCoord(int x, int y)
+{
+	//Calculating row and column of cell in matrix
+	int x_cell = (this->width() - FIELD_RIGHT_MARGIN) / NUM_OF_CELLS_X;
+	int y_cell = (this->height() - FIELD_BOTTOM_MARGIN) / NUM_OF_CELLS_Y;
+	int row = y / y_cell;
+	int column = x / x_cell;
+	int return_code = 0;
+
+	//Switch his state
+	switch (Simulation->getStateOfCell(column + 1, row + 1))
+	{
+	case GameOfLifeSim::DEAD:
+		return_code = Simulation->setStateOfCell(column + 1, row + 1, GameOfLifeSim::ALIVE);
+		break;
+	case GameOfLifeSim::ALIVE:
+		return_code = Simulation->setStateOfCell(column + 1, row + 1, GameOfLifeSim::DEAD);
+		break;
+	default:
+		return_code = Simulation->setStateOfCell(column + 1, row + 1, GameOfLifeSim::ERR);
+		break;
+	}
+
+	//Check return code for coorect set state
+	if (return_code)
+	{
+		qDebug() << "Wrong game field coordinate! " << "x: " << column + 1 << "y: " << row + 1;
+	}
+}
+
 //Processing user mouse click before start the game and set game field cells value
 void GameField::mousePressEvent(QMouseEvent* event)
 {
@@ -80,7 +111,7 @@ void GameField::mousePressEvent(QMouseEvent* event)
 		switch (event->button())
 		{
 		case Qt::LeftButton:
-			Simulation->setStateOfCellFromCoord(event->x(), event->y(), this->width(), this->height());
+			setStateOfCellFromCoord(event->x(), event->y());
 			break;
 		default:
 			QWidget::mousePressEvent(event);
