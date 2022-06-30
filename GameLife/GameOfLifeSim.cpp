@@ -56,10 +56,21 @@ void GameOfLifeSim::setRandomCells()
 	{
 		for (int j = 1; j <= NUM_OF_CELLS_X; ++j)
 		{
-			if (setStateOfCell(j, i, static_cast<GameOfLifeSim::StateOfCells>(std::rand() % 2)))
+			if (std::rand() % NUM_OF_RANDOM_FIELD_FULLNESS)
 			{
-				qDebug() << "Wrong game field coordinate! " << "x: " << j << " " << "y: " << i;
+				if (setStateOfCell(j, i, DEAD))
+				{
+					qDebug() << "Wrong game field coordinate! " << "x: " << j << " " << "y: " << i;
+				}
 			}
+			else
+			{
+				if (setStateOfCell(j, i, ALIVE))
+				{
+					qDebug() << "Wrong game field coordinate! " << "x: " << j << " " << "y: " << i;
+				}
+			}
+			
 		}
 	}
 }
@@ -70,7 +81,7 @@ int GameOfLifeSim::getNumOfCurrentGeneration() const
 	return numOfCurrentGeneration;
 }
 
-//Set fictional rows and colums during the game
+//Set fictional rows and colums during the game by copy opposite row/column and opposite corner
 void GameOfLifeSim::setFictionalState()
 {
 	for (int i = 1; i <= NUM_OF_CELLS_X; ++i)

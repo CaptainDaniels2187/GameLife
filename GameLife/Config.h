@@ -29,6 +29,8 @@
 
 #define TIMER_STEP_MS 33
 
+#define NUM_OF_RANDOM_FIELD_FULLNESS 20
+
 //////////////////////////////////////////////
 ////////////GAME FIELD SETTINGS///////////////
 #define NUM_OF_CELLS_X 45
