@@ -13,11 +13,13 @@ SOURCES += \
     MyWindow.cpp
     GameField.cpp
     GameOFLifeSim.cpp
+    MyDialogWindow.cpp
 
 HEADERS += \
     MyWindow.h
     GameField.h
     GameOFLifeSim.h
+    MyDialogWindow.h
     Config.h
 
 # Default rules for deployment.
