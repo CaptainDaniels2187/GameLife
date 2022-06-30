@@ -149,11 +149,11 @@ void GameField::showDialog(GameOfLifeSim::StateOfGame state)
 	}
 
 	//Create the question label
-	QLabel* Question = new QLabel(QString(QString::fromWCharArray(L"Желаете ли вы начать заново?")));
+	QLabel* Question = new QLabel(QString::fromWCharArray(L"Желаете ли вы начать заново?"));
 
 	//Create user interface buttons
-	QPushButton* ResetButton = new QPushButton(QString(QString::fromWCharArray(L"Да")));
-	QPushButton* ExitButton = new QPushButton(QString(QString::fromWCharArray(L"Выход")));
+	QPushButton* ResetButton = new QPushButton(QString::fromWCharArray(L"Да"));
+	QPushButton* ExitButton = new QPushButton(QString::fromWCharArray(L"Выход"));
 
 	//Connect buttons to dialog window slots
 	QObject::connect(ResetButton, SIGNAL(clicked()), endGameWindow, SLOT(accept()));
@@ -265,5 +265,4 @@ void GameField::paintEvent(QPaintEvent* event)
 		x = 0;
 		y += y_cell;
 	}
-	//painter.drawRect(QRect(this->pos(), this->pos() + QPoint(this->width() - FIELD_RIGHT_MARGIN, this->height() - FIELD_BOTTOM_MARGIN)));
 }

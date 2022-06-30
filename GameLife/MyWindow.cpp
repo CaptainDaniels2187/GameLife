@@ -54,7 +54,7 @@ MyWindow::MyWindow(const QApplication& app)
 	QObject::connect(ExitButton, SIGNAL(clicked()), &app, SLOT(quit()));
 
 	//Create text labels for display current game generation 
-	QLabel* TextGenLabel = new QLabel(QString(QString::fromWCharArray(L"Текущее поколение:")));
+	QLabel* TextGenLabel = new QLabel(QString::fromWCharArray(L"Текущее поколение:"));
 	QLabel* VolatileNumGenLabel = new QLabel("0");
 
 	//Connect volatile num of the game generation to text label
