@@ -33,6 +33,7 @@ void GameField::StopTimer()
 {
 	isWorking = false;
 	killTimer(GameTimer);
+	GameTimer = 0;
 }
 
 //Reset game to start
@@ -42,7 +43,6 @@ void GameField::ResetGame()
 	if (isWorking)
 	{
 		StopTimer();
-		GameTimer = 0;
 	}
 
 	//Reset all data in Simulation
