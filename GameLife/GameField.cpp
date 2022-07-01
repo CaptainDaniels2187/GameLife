@@ -192,7 +192,7 @@ void GameField::paintEvent(QPaintEvent* event)
 	int x_cell = (this->width() - FIELD_RIGHT_MARGIN) / NUM_OF_CELLS_X;
 	int y_cell = (this->height() - FIELD_BOTTOM_MARGIN) / NUM_OF_CELLS_Y;
 
-	//Curren pos
+	//Current pos
 	int x = 0, y = 0;
 
 	//Draw the matrix
