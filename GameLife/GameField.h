@@ -13,7 +13,6 @@ private:
     int GameTimer;
     GameOfLifeSim* Simulation;
     bool isStarted;
-    bool isWorking;
 
 //Signals send to others
 signals:

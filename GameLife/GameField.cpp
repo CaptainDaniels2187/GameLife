@@ -7,7 +7,6 @@ GameField::GameField(QWidget* parent) : QWidget(parent)
 {
 	GameTimer = 0;
 	isStarted = false;
-	isWorking = false;
 	Simulation = new GameOfLifeSim;
 }
 
@@ -24,14 +23,12 @@ void GameField::StartTimer()
 	{
 		isStarted = true;
 	}
-	isWorking = true;
 	GameTimer = startTimer(TIMER_STEP_MS);
 }
 
 //Stop game timer
 void GameField::StopTimer()
 {
-	isWorking = false;
 	killTimer(GameTimer);
 	GameTimer = 0;
 }
@@ -40,7 +37,7 @@ void GameField::StopTimer()
 void GameField::ResetGame()
 {
 	//Check for working timer
-	if (isWorking)
+	if (!GameTimer)
 	{
 		StopTimer();
 	}
